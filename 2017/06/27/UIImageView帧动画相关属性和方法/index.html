@@ -1,58 +1,96 @@
 <!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>UIImageView帧动画相关属性和方法 | Hexo</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">UIImageView帧动画相关属性和方法</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> home</i></a><a href="/archives/"><i class="fa fa-archive"> archive</i></a><a href="/about/"><i class="fa fa-user"> about</i></a><a href="/atom.xml"><i class="fa fa-rss"> rss</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="search"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">UIImageView帧动画相关属性和方法</h1><div class="post-meta"><a href="/2017/06/27/UIImageView帧动画相关属性和方法/#comments" class="comment-count"></a><p><span class="date">Jun 27, 2017</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>hits</i></i></span></p></div><div class="post-content"><h4 id="UIImageView帧动画相关属性和方法"><a href="#UIImageView帧动画相关属性和方法" class="headerlink" title="UIImageView帧动画相关属性和方法"></a>UIImageView帧动画相关属性和方法</h4><ul>
 <li>需要播放的序列帧图片数组(里面是UIImage对象, 会按顺序显示里面的图片)</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSArray</span> *animationImages;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">@property(nonatomic, copy) NSArray *animationImages;
+
+</code></pre>
 <ul>
 <li>帧动画持续的时间</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSTimeInterval</span> animationDuration;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">@property(nonatomic) NSTimeInterval animationDuration;
+</code></pre>
 <ul>
 <li>帧动画的执行次数(默认是无限循环)</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSIteger</span> animationRepeatCount;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">@property(nonatomic) NSIteger animationRepeatCount;
+</code></pre>
 <ul>
 <li>开始动画</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)startAnimating;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">- (void)startAnimating;
+</code></pre>
 <ul>
 <li>停止动画</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)stopAnimating;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">- (void)stopAnimating;
+</code></pre>
 <ul>
 <li>是否正在执行帧动画</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)isAnimating;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">- (BOOL)isAnimating;
+</code></pre>
 <h4 id="设置帧动画的步骤-简单分为4步"><a href="#设置帧动画的步骤-简单分为4步" class="headerlink" title="设置帧动画的步骤(简单分为4步)"></a>设置帧动画的步骤(简单分为4步)</h4><hr>
 <ol>
 <li>设置动画图片</li>
 </ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xxImages 为图片数组</span></span><br><span class="line">xxImageView.animationImages = xxImages;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">//xxImages 为图片数组
+xxImageView.animationImages = xxImages;
+</code></pre>
 <ol start="2">
 <li>设置动画持续时间</li>
 </ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxImageView.animationDuration = <span class="number">0.1</span> * xxImages.count;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">xxImageView.animationDuration = 0.1 * xxImages.count;
+</code></pre>
 <ol start="3">
 <li>设置动画的重复次数(默认无限循环)</li>
 </ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxImageView.animationRepeatCount = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">xxImageView.animationRepeatCount = 2;
+</code></pre>
 <ol start="4">
 <li>启动动画</li>
 </ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[xxImageView startAnimation];</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">[xxImageView startAnimation];
+</code></pre>
 <ul>
 <li>封装动画代码</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//images 要执行动画的图片数组</span></span><br><span class="line"><span class="comment">//repeatCount 动画重复次数</span></span><br><span class="line"><span class="comment">//duration 每个图片的播放时间</span></span><br><span class="line">- (<span class="keyword">void</span>)beginWithImages(<span class="built_in">NSArray</span> *)images repeatcount:(<span class="keyword">int</span>)repeatCount animationDuration:(<span class="built_in">NSTimeInterval</span>)duration&#123;</span><br><span class="line"><span class="comment">//如果当前的ImageView正在执行动画, 不再开启新的动画</span></span><br><span class="line"><span class="keyword">if</span> (xxImageView.isAnimation) &#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置动画图片</span></span><br><span class="line">xxImageView.animationImages = images;</span><br><span class="line"><span class="comment">//设置动画持续时间</span></span><br><span class="line">xxImageView.animationDuration = duration * images.count;</span><br><span class="line"><span class="comment">//设置动画的重复次数</span></span><br><span class="line">xxIMageView.animationRepeatCount = <span class="number">2</span>;</span><br><span class="line"><span class="comment">//启动动画</span></span><br><span class="line">[xxImageView starAnimation];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">//images 要执行动画的图片数组
+//repeatCount 动画重复次数
+//duration 每个图片的播放时间
+- (void)beginWithImages(NSArray *)images repeatcount:(int)repeatCount animationDuration:(NSTimeInterval)duration{
+//如果当前的ImageView正在执行动画, 不再开启新的动画
+if (xxImageView.isAnimation) {
+return;
+}
+
+//设置动画图片
+xxImageView.animationImages = images;
+//设置动画持续时间
+xxImageView.animationDuration = duration * images.count;
+//设置动画的重复次数
+xxIMageView.animationRepeatCount = 2;
+//启动动画
+[xxImageView starAnimation];
+
+}
+
+</code></pre>
 <h4 id="帧动画的内存优化"><a href="#帧动画的内存优化" class="headerlink" title="帧动画的内存优化"></a>帧动画的内存优化</h4><ul>
 <li>UIImage的加载方法</li>
 </ul>
 <p>注意 : 如果图片放在Assets.xcassets里面 只能通过imageName:方法加载图片<br>带缓存加载 – 直至应用退出内存才会释放</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"图片名称"</span>];</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">[UIImage imageNamed:@&quot;图片名称&quot;];
+</code></pre>
 <p>不带缓存的加载 – 当有新的动画时 旧动画开辟的内存会被释放 然后开辟新的空间</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有多个动画时 这个方法可以优化内存</span></span><br><span class="line">[<span class="built_in">UIImage</span> imageWithcontentOfFile:图片路径];</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">//有多个动画时 这个方法可以优化内存
+[UIImage imageWithcontentOfFile:图片路径];
+</code></pre>
 <ul>
 <li>另外现在图片加载结束时可以将帧动画的内存释放</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//等待动画结束释放内存</span></span><br><span class="line">[xxImageView performSelector:@seletor(setAnimationImages:) withObject:<span class="literal">nil</span> afterDelbyL:xxImaeView.animationDuration];</span><br></pre></td></tr></table></figure>
+<pre><code class="objc">//等待动画结束释放内存
+[xxImageView performSelector:@seletor(setAnimationImages:) withObject:nil afterDelbyL:xxImaeView.animationDuration];
+
+</code></pre>
 </div><div class="tags"><a href="/tags/动画/">动画</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/07/27/UIView的transform(仿射变换)属性/" class="pre">UIView的transform(仿射变换)属性</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">contents</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#UIImageView帧动画相关属性和方法"><span class="toc-text">UIImageView帧动画相关属性和方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置帧动画的步骤-简单分为4步"><span class="toc-text">设置帧动画的步骤(简单分为4步)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帧动画的内存优化"><span class="toc-text">帧动画的内存优化</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/UIVIew动画/">UIVIew动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/UIView的transform(仿射变换)属性/">UIView的transform(仿射变换)属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/27/UIImageView帧动画相关属性和方法/">UIImageView帧动画相关属性和方法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> tags</i></div><div class="tagcloud"><a href="/tags/动画/" style="font-size: 15px;">动画</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> archive</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">baidusitemap</a> |  <a href="/atom.xml">rss</a> |  <a href="/about/">about</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">John Doe.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script></body></html>
